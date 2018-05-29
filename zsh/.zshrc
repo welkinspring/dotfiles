@@ -104,3 +104,5 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 setopt AUTO_CD
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -234,8 +234,9 @@ inoremap <silent><F7> <esc>:Dox<CR>:<BS>i
 " --- plugins themes and colors.
 " --- Plug altercation/vim-colors-solarized
 syntax enable
-set background=dark
+let g:solarized_termtrans = 1
 colorscheme solarized
+togglebg#map("<F5>") 
 
 
 " --------------------------------------------------------------
@@ -313,7 +314,6 @@ set nocompatible
 filetype off
 
 filetype plugin indent on
-syntax on
 set ruler
 set number
 set cursorcolumn " -highlight current column.

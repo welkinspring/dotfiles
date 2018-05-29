@@ -1,7 +1,7 @@
 " vim configuration.
 
 " ----------------------------------------------------------
-" This is vim-plug tool for manager the pulgins.
+" This is vim-plug tool for manage the pulgins.
 " ----------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
@@ -62,6 +62,8 @@ call plug#end()
 " --------------------------------------------------------------
 " Below are the plguins configuration.
 " --------------------------------------------------------------
+
+
 " --- Plug scrooloose/nerdtree
 " This will open NERDTree automatically when vim starts up if no files were specified, say type vim . with local.
 autocmd StdinReadPre * let s:std_in=1
@@ -70,16 +72,16 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeShowHidden = 1
+" let g:NERDTreeShowHidden = 1 #NERD shortcut alt + i
 map <F2> :NERDTreeToggle<CR>
 
 
 " --- Plug 'scrooloose/nerdcommenter'
-" Guided for use below table:
-" 5,cc :comment 5 lines one by one
-" 5,cu :uncomment 5 lines
-" 5,cm :comment 5 lines one time
-" ,cA  :insert /* */ and enter insert mode
+" guidance for using below table:
+" 	5,cc :comment 5 lines one by one
+" 	5,cu :uncomment 5 lines
+" 	5,cm :comment 5 lines one time
+" 	,cA  :insert /* */ and enter insert mode
 " add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " use compact syntax for prettified multi-line comments

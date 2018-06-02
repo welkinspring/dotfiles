@@ -106,3 +106,4 @@ setopt AUTO_CD
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias vi='/usr/local/bin/vim'

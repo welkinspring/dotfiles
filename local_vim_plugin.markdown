@@ -51,7 +51,7 @@ Language:
 	Plug 'tomtom/tcomment_vim'
 	https://github.com/tomtom/tcomment_vim
 4. markdown:
-	Plug 'tpope/vim-markdown'
+	Plug 'plasticboy/vim-markdown'
 	https://github.com/tpope/vim-markdown
 5. vim-markdown:
 	Plug 'tpope/vim-markdown'
@@ -107,27 +107,6 @@ code display:
 5. jellybeans:
 	Plug 'nanotech/jellybeans.vim'
 	https://github.com/nanotech/jellybeans.vim
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

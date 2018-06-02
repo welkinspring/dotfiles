@@ -39,7 +39,17 @@ Plug 'easymotion/vim-easymotion'
 Plug 'SirVer/ultisnips'
 Plug 'vim-scripts/L9'
 
-
+" markdown prereview setup
+" Plug 'godlygeek/tabular'
+" Plug 'tpope/vim-markdown'
+" Plug 'suan/vim-instant-markdown' " please take care for this plugin needs node.js and npm to support, @see details.
+" guidance of details:
+" 	git clone git://github.com/npm/npm.git
+" 	cd npm
+" 	make install
+" 	sudo npm -g install instant-markdown-d
+" 	then add vim-instant-markdown  plugin in this config
+Plug 'jamshedvesuna/vim-markdown-preview'
 Plug 'MarcWeber/vim-addon-mw-utils' " - interpret a fily by function and cache file automatically.
 "Plug 'tomtom/tlib_vim' " - Tjumps that lets users filter and select items from the jump list.
 Plug 'garbas/vim-snipmate' " - aims to provide support for textual snippets, such as for<tab> will extract for(i=0;...
@@ -120,7 +130,7 @@ let g:NERDTreeIndicatorMapCustom = {
 " This plugin is intended to be used with vim-devicons and to use it you will
 " need to add a new font from nerd-fonts to your machine so you can see the
 " icons when using vim. TBD
- 
+set shell=bash\ -i 
 
 " --- Plug 'vim-airline/vim-airline'
 " --- Plug 'vim-airline/vim-airline-themes'

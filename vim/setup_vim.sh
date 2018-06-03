@@ -68,10 +68,8 @@ lnif() {
 create_symlinks() {
     local source_path="$1"
     local target_path="$2"
-    lnif "$source_path/vimrc"              	"$target_path/.vimrc"
-    lnif "$source_path/vimrc.clean"          	"$target_path/.vim_dotfiles/.vimrc.clean"
-    lnif "$source_path/vimrc.plugs"    		"$target_path/.vim_dotfiles/.vimrc.plugs"
-    lnif "$source_path/README.md"     		"$target_path/.vim_dotfiles/.vimrc.md"
+    lnif "$source_path/vimrc" 		"$target_path/.vimrc"
+    lnif "$source_path/vimrc.plugins" 	"$target_path/.vim_dotfiles/.vimrc.plugs"
 
     ret="$?"
     success "setting up vim symlinks."
@@ -123,10 +121,10 @@ create_symlinks "$APP_PATH" "$HOME"
 
 if program_exists "vim"; then
     if [ "$update_setting" -eq '1' ]; then
-        install_vim_plug "$HOME/.vim_dotfiles/autoload" "$PLUG_URL" "vim-plug" "vim"
+        install_vim_plug "$HOME/.vim/autoload" "$PLUG_URL" "vim-plug" "vim"
     fi
     setup_plug "vim"
 fi
 
-msg "\nthanks for installing welkinspring's dotfiles config"
-msg "© `date +%Y` https://github.com/welkinspring/dotfiles.git"
+msg "\nthanks for installing welkinspring's dotfiles"
+msg "`date +%Y` https://github.com/welkinspring/dotfiles.git"

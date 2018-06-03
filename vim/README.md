@@ -1,16 +1,12 @@
-# leoatchina的vim配置文件
-This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job. To meet my needs,I have changed lots of settings and plugins.
- You can find spf13's origin config at http://spf13.com
+# welkinsping's vim配置文件
 
-
-[spf13]()对他自己作品的介绍
-> spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and MacVim.
+> welkinspring-vim is a distribution of vim plugins and resources for Vim, Gvim and MacVim.
 > It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
-> The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
+> This distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.clean`, and `~/.vimrc.plugins` vim RC files.
 
 ## 背景
-本人是生信工程师,主要使用的语言是`python`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。
-但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.请访问[leoatchina的vim配置文件](https://github.com/leoatchina/spf13-vim-leoatchina).由于本人水平所限,一定有很多错误和bug,望各位指正.
+本人是一名软件协议工程师,主要使用的语言是`linux c`,`Wi-Fi`,`shell`, `driver`, `protocol`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了vim大大提高了写代码的效率。
+但是,安装vim-v8.0版本后原配置仍然有很多插件和配置不符合个人习惯的需要,因此,由于本人水平所限,一定有很多错误和bug,望各位指正.
 **注意**使本配置文件后可能会影响vim运行流畅度,介意者要通过学习后,关闭某些特性以提高速度.
 
 ## 对使用者的要求
@@ -18,32 +14,28 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 
 ## 配置文件
 **各配置文件**
-* `.vimrc`      # 最主要的配置文件,配色、快捷键、显示方式等参数都在这里设置
-* `.vimrc.local` # 自定义配置
-* `.vimrc.plug`  # 插件管理文件
+* `.vimrc`      	# 最主要的配置文件,配色、快捷键、显示方式等参数都在这里设置
+* `.vimrc.local` 	# 自定义配置
+* `.vimrc.plug`  	# 插件管理文件
+* `.vimrc.clean`  	# 插件清理文件
 
 ## 安装
-*安装本配置 需要 Git 1.7+ 和 Vim 7.4+，部分插件如`ale`,`AsyncRun`,需要Vim8.0*
+*安装本配置 需要 git 1.7+ 和 vim 7.4+，部分插件如`ale`,`AsyncRun`,需要Vim8.0*
 
 ### Linux, \*nix, Mac OSX 下的安装
 
 需要系统里安装好`git`,`curl`
 
 ```bash
-  git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
-  cd spf13-vim-leoatchina
-  ./install.sh   第一次安装要按`y`
-```
-
-### windows下的安装
-```
-点击setup.cmd
+git clone https://github.com/welkinspring/dotfiles.git
+cd dotfiles
+./vim/setup_vim.sh   第一次安装要按`y`
 ```
 
 ### 升级到最新版本
 ```bash
-  vim +PlugUpdate
-  或者在vim里直接  :PlugUpdate
+vim +PlugUpdate
+或者在vim里直接  :PlugUpdate
 ```
 
 ## 一些功能
@@ -67,14 +59,6 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 * 总是显示状态栏
 * 根据系统情况，自动或手动设定补全插件
 
-## 主要改动
-我在spf13的基础上，做了一些*微小*的工作
-- 大量精减，去除了`fork`,`before`功能
-- 用`vim-plug`代替了原来的`vundle`作为插件管理器
-- 修改了安装代码，变成直接从clone的目录中软链接到用户目录下，**不再支持XP**
-- 按自己习惯修改了大量快捷键
-- 去除了原来定义的一些函数
-- 加入了6种补全插件：`youcompleteme`,`deoplete`,`completor`,`asyncomplete`,`neocomplete`,`neocomplcache`,默认会在后5种中选择一种。
 
 ## 基本快捷键
 * `<Leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;
@@ -156,7 +140,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 
 
 ## 插件系统
-我使用[vim-plug](https://github.com/junegunn/vim-plug)代替了spf13的[vundle](https://github.com/VundleVim/Vundle.vim),安装速度快了数倍。高级功能还在调试中
+我使用[vim-plug](https://github.com/junegunn/vim-plug)代替了[vundle](https://github.com/VundleVim/Vundle.vim),安装速度快了数倍。高级功能还在调试中
 
 ### 补全插件
 - 用了6种补全插件,2种代码插件

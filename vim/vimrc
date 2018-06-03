@@ -27,7 +27,7 @@ set nobackup 			" disbale a backup before overwriting a file
 set nowb 			" disbale a backup before overwriting a file
 
 set hlsearch 			" highlight the search string
-set incsearch 			" enable incremental searches will be done 
+set incsearch 			" enable incremental searches will be done
 set noerrorbells  		" enable ring the bell (beep or screen flash) for error messages
 set novisualbell  		" use visual bell instead of beeping
 set t_vb= 			" no beep or flash is wanted
@@ -82,20 +82,20 @@ autocmd filetype c set dictionary=$VIMFILES/dict/c.dict
 let mapleader = ";" 		" global leader
 let g:mapleader = ";" 		" global leader
 " fast saving
-nmap <silent> <leader>ww :w<cr> 
+nmap <silent> <leader>ww :w<cr>
 nmap <silent> <leader>wf :w!<cr>
 
 
 " source plugins before those config
 syntax enable 			" enable syntax highlighting before color set
 set background=dark         	" assume a dark background
-let g:solarized_termtrans = 1
-colorscheme solarized
+"let g:solarized_termtrans = 1
+"colorscheme solarized
 
 " trigger inversion colorscheme
 function! ToggleBG()
-	let s:tbg = &background 	
-	if s:tbg == "dark" 
+	let s:tbg = &background
+	if s:tbg == "dark"
 		set background=light
 	else
 		set background=dark
@@ -139,4 +139,4 @@ nmap <silent> <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <silent> <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <silent> <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <silent> <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-map <F12> :!find . -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp*"  > cscope.files; cscope -bkq -i cscope.files; rm tags -f; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
+map <F12> :!find . -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp*"  > cscope.files; cscope -bkq -i cscope.files; rm tags -f; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>

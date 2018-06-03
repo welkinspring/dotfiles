@@ -11,11 +11,7 @@ die() {
 }
 
 rm $HOME/.vimrc
-rm $HOME/.vimrc.local
-rm $HOME/.vimrc.plugs
-rm $HOME/.vimrc.md
-rm $HOME/.config/nvim/init.vim
+rm $HOME/.vim_dotfiles/.vimrc.local
+rm $HOME/.vim_dotfiles/vimrc.plugs
 
 rm -rf $HOME/.vim
-rm -rf $HOME/.gvim
-rm -rf $HOME/.nvim

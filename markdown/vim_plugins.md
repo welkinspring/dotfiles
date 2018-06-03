@@ -106,7 +106,3 @@ code display:
 	https://github.com/kien/rainbow_parentheses.vim
 5. jellybeans:
 	Plug 'nanotech/jellybeans.vim'
-	https://github.com/nanotech/jellybeans.vim
-
-
-

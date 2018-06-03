@@ -10,16 +10,16 @@ set -e
 TMUX_VERSION=2.7
 LIBEVENT_VER=2.1.8
 NCURSES_VER=5.9
- 
+
 # create our directories
 mkdir -p $HOME/local $HOME/tmux_tmp
 cd $HOME/tmux_tmp
- 
+
 # download source files for tmux, libevent, and ncurses
 wget http://ftp.gnu.org/gnu/ncurses/ncurses-${NCURSES_VER}.tar.gz
 #wget https://github.com/libevent/libevent/releases/download/release-${LIBEVENT_VER}-stable/libevent-${LIBEVENT_VER}-stable.tar.gz
 #wget https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz
- 
+
 # extract files, configure, and compile
 
 ############
@@ -31,7 +31,7 @@ wget http://ftp.gnu.org/gnu/ncurses/ncurses-${NCURSES_VER}.tar.gz
 #make
 #make install
 #cd ..
- 
+
 ############
 # ncurses #
 ############
@@ -41,7 +41,7 @@ cd ncurses-${NCURSES_VER}
 make
 make install
 cd ..
- 
+
 ############
 # tmux #
 ############
@@ -51,8 +51,8 @@ cd tmux-${TMUX_VERSION}
 CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib" make
 cp tmux $HOME/local/bin
 cd ..
- 
+
 # cleanup
 rm -rf $HOME/tmux_tmp
- 
+
 echo "$HOME/local/bin/tmux is now available. You can optionally add $HOME/local/bin to your PATH."

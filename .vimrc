@@ -323,7 +323,6 @@ nnoremap <silent> <C-f> :Lines<CR>
 " vim personal style and format stuff configuration.
 " --------------------------------------------------------------
 set nocompatible
-filetype off
 
 filetype plugin indent on
 set ruler

@@ -87,7 +87,7 @@ setup_plug() {
 }
 
 install_vim_plug() {
-    curl -fLo "$1/plug.vim" --create-dirs "$2" 
+    curl -fLo "$1/plug.vim" --create-dirs "$2"
     success "successfully installed/updated $3 for $4"
     debug
 }
@@ -121,7 +121,7 @@ create_symlinks "$APP_PATH" "$HOME"
 
 if program_exists "vim"; then
     if [ "$update_setting" -eq '1' ]; then
-        install_vim_plug "$HOME/.vim/autoload" "$PLUG_URL" "vim-plug" "vim"
+        install_vim_plug "$HOME/.vim_plugins/autoload" "$PLUG_URL" "vim-plug" "vim"
     fi
     setup_plug "vim"
 fi

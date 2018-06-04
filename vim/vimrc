@@ -62,20 +62,20 @@ filetype indent on 		" enable loading the indent file for specific file types
 
 " -----------------------------------------------------------------------------------------------------------------------
 " using before config
-if filereadable(expand("~/.vim_dotfiles/.vimrc.local"))
-	source ~/.vim_dotfiles/.vimrc.local
+if filereadable(expand("~/.vim/.vimrc.local"))
+	source ~/.vim/.vimrc.local
 endif
 
 " using plugins config
-if filereadable(expand("~/.vim_dotfiles/.vimrc.plugs"))
-	source ~/.vim_dotfiles/.vimrc.plugs
+if filereadable(expand("~/.vim/.vimrc.plugs"))
+	source ~/.vim/.vimrc.plugs
 endif
 
 " -----------------------------------------------------------------------------------------------------------------------
 set encoding=utf-8
 set fileencodings=utf-8,gbk,gb18030,gk2312,chinese,latin-1
 
-let $VIMFILES = $HOME.'/.vim_dotfiles'
+let $VIMFILES = $HOME.'/.vim'
 autocmd filetype c set dictionary=$VIMFILES/dict/c.dict
 
 " global leader

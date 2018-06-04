@@ -69,7 +69,7 @@ create_symlinks() {
     local source_path="$1"
     local target_path="$2"
     lnif "$source_path/vimrc" 		"$target_path/.vimrc"
-    lnif "$source_path/vimrc.plugins" 	"$target_path/.vim_dotfiles/.vimrc.plugs"
+    lnif "$source_path/vimrc.plugins" 	"$target_path/.vim/.vimrc.plugs"
 
     ret="$?"
     success "setting up vim symlinks."
@@ -96,7 +96,7 @@ install_vim_plug() {
 variable_set "$HOME"
 program_must_exist "git"
 program_must_exist "curl"
-mkdir -p "$HOME/.vim_dotfiles/session"
+mkdir -p "$HOME/.vim/session"
 
 read -p "do you want to update vimrc and vim-plug (Y for Yes , any other key for No)? " -n 1 -r
 echo
@@ -110,11 +110,11 @@ if [ "$update_setting" -eq '1' ]; then
     success "update to the latest version of welkinspring-dotfiles"
 fi
 
-if [ -f $HOME/.vim_dotfiles/.vimrc.local ]; then
-    success "$HOME/.vim_dotfiles/.vimrc.local exists."
+if [ -f $HOME/.vim/.vimrc.local ]; then
+    success "$HOME/.vim/.vimrc.local exists."
 else
-    cp $APP_PATH/vimrc.local $HOME/.vim_dotfiles/.vimrc.local
-    success "$HOME/.vim_dotfiles/.vimrc.local does not exist, created it."
+    cp $APP_PATH/vimrc.local $HOME/.vim/.vimrc.local
+    success "$HOME/.vim/.vimrc.local does not exist, created it."
 fi
 
 create_symlinks "$APP_PATH" "$HOME"

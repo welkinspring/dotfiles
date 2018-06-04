@@ -121,7 +121,7 @@ create_symlinks "$APP_PATH" "$HOME"
 
 if program_exists "vim"; then
     if [ "$update_setting" -eq '1' ]; then
-        install_vim_plug "$HOME/.vim_plugins/autoload" "$PLUG_URL" "vim-plug" "vim"
+        install_vim_plug "$HOME/.vim/autoload" "$PLUG_URL" "vim-plug" "vim"
     fi
     setup_plug "vim"
 fi

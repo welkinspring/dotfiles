@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# Copyright (C) 2006 by Johannes Zellner, <johannes@zellner.org>
-# modified by mac@calmar.ws to fit my output needs
-# modified by crncosta@carloscosta.org to fit my output needs
+# Copyright (C) 2017, <welkinspring@gmail.com>
 
 import sys
 import os

@@ -12,6 +12,6 @@ die() {
 
 rm $HOME/.vimrc
 rm $HOME/.vim_dotfiles/.vimrc.local
-rm $HOME/.vim_dotfiles/vimrc.plugs
+rm $HOME/.vim_dotfiles/.vimrc.plugs
 
 rm -rf $HOME/.vim

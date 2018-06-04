@@ -78,9 +78,10 @@ set fileencodings=utf-8,gbk,gb18030,gk2312,chinese,latin-1
 let $VIMFILES = $HOME.'/.vim_dotfiles'
 autocmd filetype c set dictionary=$VIMFILES/dict/c.dict
 
+" global leader
+let mapleader = ";"
+let g:mapleader = ";"
 
-let mapleader = ";" 		" global leader
-let g:mapleader = ";" 		" global leader
 " fast saving
 nmap <silent> <leader>ww :w<cr>
 nmap <silent> <leader>wf :w!<cr>

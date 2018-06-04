@@ -7,7 +7,7 @@ app_name='welkinspring-dotfiles'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='master'
 debug_mode='1'
 update_setting='0'
-# this is vim plugins manager tools which is tiny and agile
+# this is vim plugins manager tool which is tiny and agile
 [ -z "$PLUG_URL" ] && PLUG_URL="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
 ############################  BASIC SETUP TOOLS
@@ -106,7 +106,7 @@ then
 fi
 ret=0
 if [ "$update_setting" -eq '1' ]; then
-    git pull
+    cd ..; git pull
     success "update to the latest version of welkinspring-dotfiles"
 fi
 

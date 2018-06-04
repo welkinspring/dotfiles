@@ -67,6 +67,7 @@ if filereadable(expand("~/.vim_dotfiles/.vimrc.local"))
 endif
 
 " using plugins config
+set rtp=~/.vim_dotfiles
 if filereadable(expand("~/.vim_dotfiles/.vimrc.plugs"))
 	source ~/.vim_dotfiles/.vimrc.plugs
 endif

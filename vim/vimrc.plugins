@@ -21,7 +21,10 @@ Plug 'suan/vim-instant-markdown' " please take care for this plugin needs node.j
 " 	cd npm
 " 	make install
 " 	sudo npm -g install instant-markdown-d
-" 	then add vim-instant-markdown  plugin in this config
+" 	then add vim-instant-markdown plugin in this config
+
+" color theme
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 

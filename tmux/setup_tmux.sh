@@ -56,3 +56,4 @@ cd ..
 rm -rf $HOME/tmux_tmp
 
 echo "$HOME/local/bin/tmux is now available. You can optionally add $HOME/local/bin to your PATH."
+add < export PATH="$HOME/local/bin:$PATH" > to .bashrc

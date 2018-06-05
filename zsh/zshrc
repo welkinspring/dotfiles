@@ -95,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 
 # private configuration
 export EDITOR="vim"
-bindkey -v 
+bindkey -v
 
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward

@@ -1,6 +1,6 @@
 " vim plugins sumarizes.
 
-call plug#begin('~/.vim_plugins/plugged')
+call plug#begin('~/.vim/plugged')
 " Language
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'

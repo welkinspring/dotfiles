@@ -1,0 +1,5 @@
+vim shortcuts and skills:
+------------------------------------------------------------------------------
+        key             mode(normal,visual,insert)      meaning
+        $               normal                          move to line-start
+        0               normal                          move to line-end

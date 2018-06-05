@@ -78,20 +78,27 @@ set fileencodings=utf-8,gbk,gb18030,gk2312,chinese,latin-1
 let $VIMFILES = $HOME.'/.vim'
 autocmd filetype c set dictionary=$VIMFILES/dict/c.dict
 
+" when changed this vimrc config file, let it come into effect soon.
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
 " global leader
 let mapleader = ";"
-let g:mapleader = ";"
 
 " fast saving
 nmap <silent> <leader>ww :w<cr>
 nmap <silent> <leader>wf :w!<cr>
 
 
-" source plugins before those config
+
+
+
+
+" set color scheme
 syntax enable 			" enable syntax highlighting before color set
 set background=dark         	" assume a dark background
-"let g:solarized_termtrans = 1
-"colorscheme solarized
+colorscheme solarized
+"colorscheme molokai
+let g:solarized_termtrans = 1
 
 " trigger inversion colorscheme
 function! ToggleBG()
@@ -103,6 +110,7 @@ function! ToggleBG()
 	endif
 endfunction
 noremap <leader>bg:call ToggleBG()<CR>
+
 
 if has('clipboard')
 	if has('unnamedplus') 	" when possible use + register for copy-paste

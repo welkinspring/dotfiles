@@ -57,7 +57,7 @@ Plug 'honza/vim-snippets'
 "Plug 'edsono/vim-matchit'
 Plug 'kristijanhusak/vim-multiple-cursors'
 Plug 'henrik/vim-indexed-search'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " - Fuzzy finder
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " - Fuzzy finder
 Plug 'junegunn/fzf.vim'
 
 Plug 'vim-scripts/cfname' " - shows or jumps the c prototype of the function the cursor is in.
@@ -130,7 +130,7 @@ let g:NERDTreeIndicatorMapCustom = {
 " This plugin is intended to be used with vim-devicons and to use it you will
 " need to add a new font from nerd-fonts to your machine so you can see the
 " icons when using vim. TBD
-set shell=bash\ -i 
+set shell=bash\ -i
 
 " --- Plug 'vim-airline/vim-airline'
 " --- Plug 'vim-airline/vim-airline-themes'
@@ -260,7 +260,7 @@ colorscheme solarized
 "	noremap <unique> <script> :bn<CR>
 "	noremap <unique> <script> :bp<CR>
 "	noremap <C-c> :bd<CR>
-	
+
 	"INSERT mode bindings for vim(terminal)
 "	inoremap <unique> <script> <esc>:bn<CR>:<BS>i
 "	inoremap <unique> <script> <esc>:bp<CR>:<BS>i

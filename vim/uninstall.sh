@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-
 warn() {
     echo "$1" >&2
 }
@@ -10,8 +9,7 @@ die() {
     exit 1
 }
 
-rm $HOME/.vimrc
-rm $HOME/.vim_dotfiles/.vimrc.local
-rm $HOME/.vim_dotfiles/.vimrc.plugs
+unlink .vimrc
 
-rm -rf $HOME/.vim_dotfiles
+rm $HOME/.vimrc
+rm -rf $HOME/.vim

@@ -96,7 +96,7 @@ nmap <silent> <leader>wf :w!<cr>
 " set color scheme
 syntax enable 			" enable syntax highlighting before color set
 set background=dark         	" assume a dark background
-colorscheme solarized
+"colorscheme solarized
 "colorscheme molokai
 let g:solarized_termtrans = 1
 

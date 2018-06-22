@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+app_dir="$HOME/work-dotfiles"
+
 warn() {
     echo "$1" >&2
 }
@@ -9,7 +11,5 @@ die() {
     exit 1
 }
 
-unlink .vimrc
-
-rm $HOME/.vimrc
-rm -rf $HOME/.vim
+rm -rf $HOME/.vim*
+rm -rf $app_dir

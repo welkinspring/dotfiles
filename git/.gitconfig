@@ -1,7 +1,12 @@
 [user]
-	name = tyhacker
-	email = tyhacker@gmail.com
+	name 	= Jeremy
+	email 	= welkinspring@gmail.com
+
 [core]
-	editor = vim
+	editor 	= vim
+
 [merge]
-	tool = vimdiff
+	tool 	= vimdiff
+
+[credential]
+	helper = cache --timeout 7200

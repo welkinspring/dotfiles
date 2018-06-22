@@ -1,0 +1,390 @@
+From 5ba2c8f3e3b99c6b05da84a1a80836ddab8216df Mon Sep 17 00:00:00 2001
+From: Jeremy Cheng <jcheng@quantenna.com>
+Date: Thu, 21 Jun 2018 22:48:13 +0800
+Subject: [PATCH] update all formats
+
+---
+ bashrc/.bashrc     |   1 -
+ scripts/tmuxcolors |  10 +++++
+ tmux/.tmux.conf    |  26 ++---------
+ vim/.vimrc         |  70 ++++++++++++++---------------
+ vim/.vimrc.local   | 110 ++++++++++++++++++++++-----------------------
+ vim/.vimrc.plugs   |   4 +-
+ vim/README.md      |  31 +++----------
+ vim/vim-install.sh |   8 ++--
+ 8 files changed, 114 insertions(+), 146 deletions(-)
+ create mode 100755 scripts/tmuxcolors
+
+diff --git a/bashrc/.bashrc b/bashrc/.bashrc
+index e147bb2..db71cf0 100644
+--- a/bashrc/.bashrc
++++ b/bashrc/.bashrc
+@@ -1,3 +1,2 @@
+ # color bash + tmux + vim
+ export TERM="screen-256color"
+-alias tmux="tmux -2"
+diff --git a/scripts/tmuxcolors b/scripts/tmuxcolors
+new file mode 100755
+index 0000000..97f385f
+--- /dev/null
++++ b/scripts/tmuxcolors
+@@ -0,0 +1,10 @@
++#!/bin/sh
++printf "\n  "
++for i in {0..255} ; do
++    colcode="colour${i}"
++    printf "\x1b[38;5;${i}m%-10s " $colcode
++    if [ $((($i+1) % 8)) = 0  ] ; then
++        printf "\n  "
++    fi
++done
++printf "\n"
+diff --git a/tmux/.tmux.conf b/tmux/.tmux.conf
+index 2a12c93..315e997 100644
+--- a/tmux/.tmux.conf
++++ b/tmux/.tmux.conf
+@@ -14,11 +14,11 @@ bind r source-file ~/.tmux.conf \; display-message "config reloaded ok ..."
+ 
+ # fast pane switching, using prefix + k/j/h/l
+ bind -r k select-pane -U
+-bind -r j select-pane -D
++kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjhhh
+ bind -r h select-pane -L
+ bind -r l select-pane -R
+ 
+-# 
++# select or swap pane
+ bind -r e lastp
+ bind -r ^e last
+ bind -r ^u swapp -U
+@@ -60,8 +60,7 @@ set -g base-index 1
+ set -g pane-base-index 1
+ set -g status-interval 1
+ 
+-# -----------------------------------------------
+-# set bar style 1
++# ------------ set bar style --------------------
+ set -g status-bg black
+ set -g status-fg yellow
+ set -g status-style "bg=black, fg=yellow"
+@@ -75,23 +74,6 @@ set -wg window-status-separator ""
+ set -wg window-status-current-style "bg=red"
+ set -wg window-status-last-style "fg=red" #
+ set -g message-style "bg=#202529, fg=#91A8BA"
++setw -g xterm-keys on
+ set -g default-terminal "screen-256color"
+ # -----------------------------------------------
+-# set bar style 2
+-# set -g status-left-length 52
+-# set -g status-right-length 451
+-# set -g status-fg white
+-# set -g status-bg colour234
+-# set -g window-status-activity-attr bold
+-# set -g pane-border-fg colour245
+-# set -g pane-active-border-fg colour39
+-# set -g message-fg colour16
+-# set -g message-bg colour221
+-# set -g message-attr bold
+-# set -g status-left " #[fg=colour235,bg=colour252,bold] ❐ #S "
+-# [fg=colour252,bg=colour238,nobold]⮀#[fg=colour245,bg=colour238,bold] #(whoami)
+-# [fg=colour238,bg=colour234,nobold]⮀'
+-# set -g window-status-format " #[fg=white,bg=colour234] #I #W "
+-# set -g window-status-current-format " #[fg=colour234,bg=colour39]⮀#[fg=colour25,bg=colour39,noreverse,bold] #I ⮁ #W "
+-# [fg=colour39,bg=colour234,nobold]⮀"
+-# -----------------------------------------------
+diff --git a/vim/.vimrc b/vim/.vimrc
+index 3b9065c..b71ae3e 100644
+--- a/vim/.vimrc
++++ b/vim/.vimrc
+@@ -513,41 +513,41 @@
+ 
+     " NerdTree {
+         if isdirectory(expand("~/.vim/plugged/nerdtree"))
+-	    " this will open NERDTree automatically when vim starts up if no files were specified, say type vim . with local.
+-	    autocmd StdinReadPre * let s:std_in=1
+-	    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+-	    " close vim if the only window left open is a NERTree.
+-	    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+-	    " nerdtree quick find which not recommend to use / search gg G to move faster.
+-	    nnoremap <silent> <Leader>v :NERDTrFind,CR>
+-	    let g:NERDTreeDirArrowExpandable = '▸'
+-	    let g:NERDTreeDirArrowCollapsible = '▾'
+-	    " let g:NERDTreeShowHidden = 1 #NERD shortcut alt + i
+-	    " automatically delete the buffer of the file you just deleted with NerdTree
+-	    let NERDTreeAutoDeleteBuffer = 1
+-	    let NERDTreeMinimalUI = 1
+-	    let NERDTreeDirArrows = 1
+-
+-	    " different highlighting for different file extensions
+-	    function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+-	    	exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+-	    	exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+-	    endfunction
+-	    call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+-	    call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+-	    call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+-	    call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+-	    call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+-	    call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+-	    call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+-	    call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+-	    call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+-	    call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+-	    call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+-	    call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+-	    call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+-
+-	    map <F2> :NERDTreeToggle<CR>
++            " this will open NERDTree automatically when vim starts up if no files were specified, say type vim . with local.
++            autocmd StdinReadPre * let s:std_in=1
++            autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
++            " close vim if the only window left open is a NERTree.
++            autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
++            " nerdtree quick find which not recommend to use / search gg G to move faster.
++            nnoremap <silent> <Leader>v :NERDTrFind,CR>
++            let g:NERDTreeDirArrowExpandable = '▸'
++            let g:NERDTreeDirArrowCollapsible = '▾'
++            " let g:NERDTreeShowHidden = 1 #NERD shortcut alt + i
++            " automatically delete the buffer of the file you just deleted with NerdTree
++            let NERDTreeAutoDeleteBuffer = 1
++            let NERDTreeMinimalUI = 1
++            let NERDTreeDirArrows = 1
++
++            " different highlighting for different file extensions
++            function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
++                exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
++                exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
++            endfunction
++            call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
++            call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
++            call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
++            call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
++            call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
++            call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
++            call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
++            call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
++            call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
++            call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
++            call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
++            call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
++            call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
++
++            map <F2> :NERDTreeToggle<CR>
+             " map <C-e> <plug>NERDTreeTabsToggle<CR>
+             map <leader>e :NERDTreeFind<CR>
+             nmap <leader>nt :NERDTreeFind<CR>
+diff --git a/vim/.vimrc.local b/vim/.vimrc.local
+index 5707f13..c1fb460 100644
+--- a/vim/.vimrc.local
++++ b/vim/.vimrc.local
+@@ -1,28 +1,17 @@
+-colorscheme molokai
+-syntax on
+-color dracula
+-if &term == "screen"
+-    set t_Co=256
+-endif
+-
+ autocmd VimEnter * set nospell
+-set cursorcolumn
+-set cursorline
+-
+-" when changed this vimrc config file, let it come into effect soon.
+-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+ 
+ set nofoldenable                " disable code folding
+ let g:DisableAutoPHPFolding = 1 " disable PIV's folding
+ 
++
+ " vim persional style for the configuration.
+-set nocompatible 		" should be first, making vim either more vi-compatible
+-set magic 		        " changes the special characters that can be used in search patterns, old vi compatible
++set nocompatible                " should be first, making vim either more vi-compatible
++set magic                       " changes the special characters that can be used in search patterns, old vi compatible
+ 
+-set ruler			" show the line and column number of the cursor position, separated by a comma
+-set number 			" show line number
+-set cursorcolumn 		" highlight current column
+-set cursorline			" highlight current line
++set ruler                       " show the line and column number of the cursor position, separated by a comma
++set number                      " show line number
++set cursorcolumn                " highlight current column
++set cursorline                  " highlight current line
+ set backspace=indent,eol,start  " allow backspace in insert mode
+ set history=1000                " store lots of :cmdline history
+ 
+@@ -31,49 +20,56 @@ set showmode                    " show current mode down the bottom
+ set gcr=a:blinkon0              " disable cursor blink
+ set visualbell                  " no sounds
+ set autoread                    " reload files changed outside vim
+-set sessionoptions-=curdir 	" changes the effect of the |:mksession| command, the current directory
+-set sessionoptions+=sesdir 	" the directory in which the session file is located will become the current directory
++set sessionoptions-=curdir      " changes the effect of the |:mksession| command, the current directory
++set sessionoptions+=sesdir      " the directory in which the session file is located will become the current directory
+ 
+-set mouse=a 			" enable mouse for all mode
+-set mousehide 			" hide the mouse cursor while typing
+-set hidden 			" this makes vim act like all other editors, buffers can exist in the background without being in a window
+-set ignorecase smartcase 	" ignore case in search patterns, also used when searching in the tags
++set mouse=a                     " enable mouse for all mode
++set mousehide                   " hide the mouse cursor while typing
++set hidden                      " this makes vim act like all other editors, buffers can exist in the background without being in a window
++set ignorecase smartcase        " ignore case in search patterns, also used when searching in the tags
+ 
+-set noswapfile 			" disable a swapfile for the buffer
+-set nobackup 			" disbale a backup before overwriting a file
+-set nowb 			" disbale a backup before overwriting a file
++set noswapfile                  " disable a swapfile for the buffer
++set nobackup                    " disbale a backup before overwriting a file
++set nowb                        " disbale a backup before overwriting a file
+ 
+-set hlsearch 			" highlight the search string
+-set incsearch 			" enable incremental searches will be done
+-set noerrorbells  		" enable ring the bell (beep or screen flash) for error messages
+-set novisualbell  		" use visual bell instead of beeping
+-set t_vb= 			" no beep or flash is wanted
++set hlsearch                    " highlight the search string
++set incsearch                   " enable incremental searches will be done
++set noerrorbells                " enable ring the bell (beep or screen flash) for error messages
++set novisualbell                " use visual bell instead of beeping
++set t_vb=                       " no beep or flash is wanted
+ 
+-set cmdheight=2 		" number of screen lines to use for the command-line
+-set laststatus=2 		" the value of this option influences when the last window will have a status line
+-set nofoldenable 		" this option is set by commands that create a new fold or close a fold
+-set scrolloff=3 		" minimal number of screen lines to keep above and below the cursor
+-set wildmenu 			" command-line completion operates in an enhanced mode
+-set wildmode=list:longest,full 	" completion mode that is used for the character specified with 'wildchar'
+-set autoindent 			" copy indent from current line when starting a new line
+-set smartindent 		" do smart autoindenting when starting a new line
+-set cindent 			" enables automatic C program indenting
+-set cinoptions+=:0 		" place case labels N characters from the indent of the switch()
+-set smarttab 			" a <Tab> in front of a line inserts blanks according to 'shiftwidth'
+-set tabstop=8 			" number of spaces that a <Tab> in the file counts for
+-set softtabstop=8 		" number of spaces that a <Tab> counts for while performing editing operations
+-set shiftwidth=8 		" number of spaces to use for each step of (auto)indent
+-set expandtab 			" enable in insert mode: use the appropriate number of spaces to insert a <Tab>
++set cmdheight=2                 " number of screen lines to use for the command-line
++set laststatus=2                " the value of this option influences when the last window will have a status line
++set nofoldenable                " this option is set by commands that create a new fold or close a fold
++set scrolloff=3                 " minimal number of screen lines to keep above and below the cursor
++set wildmenu                    " command-line completion operates in an enhanced mode
++set wildmode=list:longest,full  " completion mode that is used for the character specified with 'wildchar'
++set autoindent                  " copy indent from current line when starting a new line
++set smartindent                 " do smart autoindenting when starting a new line
++set cindent                     " enables automatic C program indenting
++set cinoptions+=:0              " place case labels N characters from the indent of the switch()
++set smarttab                    " a <Tab> in front of a line inserts blanks according to 'shiftwidth'
++set tabstop=8                   " number of spaces that a <Tab> in the file counts for
++set softtabstop=8               " number of spaces that a <Tab> counts for while performing editing operations
++set shiftwidth=8                " number of spaces to use for each step of (auto)indent
++set expandtab                   " enable in insert mode: use the appropriate number of spaces to insert a <Tab>
+ 
+-set t_Co=256 			" set term color using 256
+-set term=xterm-256color		" set term color using 256
++set fencs=utf-8,gbk             " this is a list of character encodings considered when starting to edit an existing file
++set shell=/bin/sh               " name of the shell to use for ! and :! commands
++set pastetoggle=<F11>           " when non-empty, specifies the key sequence that toggles the 'paste' option
++
++syntax on                       " turn on syntax highlighting
++filetype on                     " enable file type detection
++filetype plugin on              " enable loading the plugin files for specific file types
++filetype indent on              " enable loading the indent file for specific file types
++
++" all color theme setting
++" color dracula
++" colorscheme molokai
++set t_ut=                       " disable background color erase
++set term=xterm-256color         " set term color using 256
+ set t_Co=256                    " force vim to use 256 colors
+-let g:solarized_termcolors=256  " use solarized 256 fallback
+-set fencs=utf-8,gbk 		" this is a list of character encodings considered when starting to edit an existing file
+-set shell=/bin/sh  		" name of the shell to use for ! and :! commands
+-set pastetoggle=<F11> 		" when non-empty, specifies the key sequence that toggles the 'paste' option
++" let g:solarized_termcolors=256  " use solarized 256 fallback
+ 
+-syntax on 			" turn on syntax highlighting
+-filetype on 			" enable file type detection
+-filetype plugin on	 	" enable loading the plugin files for specific file types
+-filetype indent on 		" enable loading the indent file for specific file types
++" when changed this vimrc config file, let it come into effect soon.
++autocmd BufWritePost $MYVIMRC source $MYVIMRC
+diff --git a/vim/.vimrc.plugs b/vim/.vimrc.plugs
+index 679b7c2..92a09eb 100644
+--- a/vim/.vimrc.plugs
++++ b/vim/.vimrc.plugs
+@@ -142,8 +142,8 @@
+             " Pick either python-mode or pyflakes & pydoc
+             Plug 'klen/python-mode'
+             Plug 'yssource/python.vim'
+-	    Plug 'vim-scripts/python_match.vim'
+-	    Plug 'vim-scripts/pythoncomplete'
++            Plug 'vim-scripts/python_match.vim'
++            Plug 'vim-scripts/pythoncomplete'
+         endif
+     " }
+ 
+diff --git a/vim/README.md b/vim/README.md
+index 872f2b4..e85ad11 100644
+--- a/vim/README.md
++++ b/vim/README.md
+@@ -3,31 +3,12 @@
+ 2. remove fork mantianer
+ 3. the load order for the configuation:
+     vim-install.sh
+-	1. .vimrc.plugs.default
+-		2. .vimrc.before
+-			3. .vimrc.before.local
+-	
+-		4. .vimrc.plugs
+-			5. .vimrc.plugs.local
++        1. .vimrc.init
++        2. .vimrc.before
++        3. .vimrc.plugs
++        4. .vimrc
++        5. .vimrc.local
+ 
+-	6. .vimrc
+-	7. .vimrc.local
+ 4. TBD
+-	cfg_plugin_groups = {}  select plugins
++cfg_plugin_groups = {}  select plugins
+ let g:cfg_plugin_groups=['smartcomplete', 'python', 'php', 'javascript', 'html','airline']
+-
+-
+-There is an additional tier of customization available to those who want to maintain a
+-fork of vim specialized for a particular group. These users can create `.vimrc.fork`
+-and `.vimrc.bundles.fork` files in the root of their fork.  The load order for the configuration is:
+-
+-1. `.vimrc.before` - vim before configuration
+-2. `.vimrc.before.fork` - fork before configuration
+-3. `.vimrc.before.local` - before user configuration
+-4. `.vimrc.bundles` - vim bundle configuration
+-5. `.vimrc.bundles.fork` - fork bundle configuration
+-6. `.vimrc.bundles.local` - local user bundle configuration
+-6. `.vimrc` - vim vim configuration
+-7. `.vimrc.fork` - fork vim configuration
+-8. `.vimrc.local` - local user configuration
+-
+diff --git a/vim/vim-install.sh b/vim/vim-install.sh
+index 35f465d..c769308 100644
+--- a/vim/vim-install.sh
++++ b/vim/vim-install.sh
+@@ -114,10 +114,10 @@ create_symlinks() {
+     local source_path="$1"
+     local target_path="$2"
+ 
+-    lnif "$source_path/.vimrc" 		"$target_path/.vimrc"
+-    lnif "$source_path/.vimrc.plugs" 	"$target_path/.vimrc.plugs"
+-    lnif "$source_path/.vimrc.before" 	"$target_path/.vimrc.before"
+-    lnif "$source_path/.vimrc.local" 	"$target_path/.vimrc.local"
++    lnif "$source_path/.vimrc"          "$target_path/.vimrc"
++    lnif "$source_path/.vimrc.plugs"    "$target_path/.vimrc.plugs"
++    lnif "$source_path/.vimrc.before"   "$target_path/.vimrc.before"
++    lnif "$source_path/.vimrc.local"    "$target_path/.vimrc.local"
+ 
+     ret="$?"
+     success "Setting up vim symlinks."
+-- 
+2.17.0
+

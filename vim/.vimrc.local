@@ -1,0 +1,75 @@
+autocmd VimEnter * set nospell
+
+set nofoldenable                " disable code folding
+let g:DisableAutoPHPFolding = 1 " disable PIV's folding
+
+
+" vim persional style for the configuration.
+set nocompatible                " should be first, making vim either more vi-compatible
+set magic                       " changes the special characters that can be used in search patterns, old vi compatible
+
+set ruler                       " show the line and column number of the cursor position, separated by a comma
+set number                      " show line number
+set cursorcolumn                " highlight current column
+set cursorline                  " highlight current line
+set backspace=indent,eol,start  " allow backspace in insert mode
+set history=1000                " store lots of :cmdline history
+
+set showcmd                     " show incomplete cmds down the bottom
+set showmode                    " show current mode down the bottom
+set gcr=a:blinkon0              " disable cursor blink
+set visualbell                  " no sounds
+set autoread                    " reload files changed outside vim
+set sessionoptions-=curdir      " changes the effect of the |:mksession| command, the current directory
+set sessionoptions+=sesdir      " the directory in which the session file is located will become the current directory
+
+set mouse=a                     " enable mouse for all mode
+set mousehide                   " hide the mouse cursor while typing
+set hidden                      " this makes vim act like all other editors, buffers can exist in the background without being in a window
+set ignorecase smartcase        " ignore case in search patterns, also used when searching in the tags
+
+set noswapfile                  " disable a swapfile for the buffer
+set nobackup                    " disbale a backup before overwriting a file
+set nowb                        " disbale a backup before overwriting a file
+
+set hlsearch                    " highlight the search string
+set incsearch                   " enable incremental searches will be done
+set noerrorbells                " enable ring the bell (beep or screen flash) for error messages
+set novisualbell                " use visual bell instead of beeping
+set t_vb=                       " no beep or flash is wanted
+
+set cmdheight=2                 " number of screen lines to use for the command-line
+set laststatus=2                " the value of this option influences when the last window will have a status line
+set nofoldenable                " this option is set by commands that create a new fold or close a fold
+set scrolloff=3                 " minimal number of screen lines to keep above and below the cursor
+set wildmenu                    " command-line completion operates in an enhanced mode
+set wildmode=list:longest,full  " completion mode that is used for the character specified with 'wildchar'
+set autoindent                  " copy indent from current line when starting a new line
+set smartindent                 " do smart autoindenting when starting a new line
+set cindent                     " enables automatic C program indenting
+set cinoptions+=:0              " place case labels N characters from the indent of the switch()
+set smarttab                    " a <Tab> in front of a line inserts blanks according to 'shiftwidth'
+set tabstop=8                   " number of spaces that a <Tab> in the file counts for
+set softtabstop=8               " number of spaces that a <Tab> counts for while performing editing operations
+set shiftwidth=8                " number of spaces to use for each step of (auto)indent
+set expandtab                   " enable in insert mode: use the appropriate number of spaces to insert a <Tab>
+
+set fencs=utf-8,gbk             " this is a list of character encodings considered when starting to edit an existing file
+set shell=/bin/sh               " name of the shell to use for ! and :! commands
+set pastetoggle=<F11>           " when non-empty, specifies the key sequence that toggles the 'paste' option
+
+syntax on                       " turn on syntax highlighting
+filetype on                     " enable file type detection
+filetype plugin on              " enable loading the plugin files for specific file types
+filetype indent on              " enable loading the indent file for specific file types
+
+" all color theme setting
+" color dracula
+" colorscheme molokai
+set t_ut=                       " disable background color erase
+set term=xterm-256color         " set term color using 256
+set t_Co=256                    " force vim to use 256 colors
+" let g:solarized_termcolors=256  " use solarized 256 fallback
+
+" when changed this vimrc config file, let it come into effect soon.
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
